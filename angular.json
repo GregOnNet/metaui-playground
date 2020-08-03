@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "projects": {
+    "metaui-playground": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/metaui-playground",
+      "sourceRoot": "apps/metaui-playground/src",
+      "prefix": "metaui-playground",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/metaui-playground",
+            "index": "apps/metaui-playground/src/index.html",
+            "main": "apps/metaui-playground/src/main.ts",
+            "polyfills": "apps/metaui-playground/src/polyfills.ts",
+            "tsConfig": "apps/metaui-playground/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/metaui-playground/src/favicon.ico",
+              "apps/metaui-playground/src/assets"
+            ],
+            "styles": ["apps/metaui-playground/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/metaui-playground/src/environments/environment.ts",
+                  "with": "apps/metaui-playground/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "metaui-playground:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "metaui-playground:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "metaui-playground:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/metaui-playground/tsconfig.app.json",
+              "apps/metaui-playground/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/metaui-playground/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/metaui-playground/jest.config.js",
+            "tsConfig": "apps/metaui-playground/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/metaui-playground/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "metaui-playground-e2e": {
+      "root": "apps/metaui-playground-e2e",
+      "sourceRoot": "apps/metaui-playground-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/metaui-playground-e2e/cypress.json",
+            "tsConfig": "apps/metaui-playground-e2e/tsconfig.e2e.json",
+            "devServerTarget": "metaui-playground:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "metaui-playground:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/metaui-playground-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/metaui-playground-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "9e25f81d-3e74-4985-b296-e74b12a79d33"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "metaui-playground"
+}
