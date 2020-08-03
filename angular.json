@@ -23,7 +23,8 @@
             "aot": true,
             "assets": [
               "apps/metaui-playground/src/favicon.ico",
-              "apps/metaui-playground/src/assets"
+              "apps/metaui-playground/src/assets",
+              "libs/swapi/src/assets"
             ],
             "styles": ["apps/metaui-playground/src/styles.scss"],
             "scripts": []
