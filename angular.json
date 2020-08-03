@@ -126,6 +126,38 @@
           }
         }
       }
+    },
+    "swapi": {
+      "projectType": "library",
+      "root": "libs/swapi",
+      "sourceRoot": "libs/swapi/src",
+      "prefix": "metaui-playground",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/swapi/tsconfig.lib.json",
+              "libs/swapi/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/swapi/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/swapi/jest.config.js",
+            "tsConfig": "libs/swapi/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/swapi/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

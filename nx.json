@@ -28,6 +28,9 @@
     "metaui-playground-e2e": {
       "tags": [],
       "implicitDependencies": ["metaui-playground"]
+    },
+    "swapi": {
+      "tags": []
     }
   }
 }
