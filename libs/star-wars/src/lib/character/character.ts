@@ -8,4 +8,8 @@ export class Character {
     public lastName: string,
     public lightsaberColor: LightsaberColor
   ) {}
+
+  static empty(): Character {
+    return new Character(-1, '', '', '', LightsaberColor.None);
+  }
 }

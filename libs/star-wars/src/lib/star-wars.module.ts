@@ -7,6 +7,8 @@ import { CharacterCardListComponent } from './character/character-card-list.comp
 import { CharacterDetailComponent } from './character/character-detail.component';
 import { StarWarsRoutingModule } from './star-wars-routing.module';
 import { StarWarsComponent } from './star-wars.component';
+import { CharacterCardComponent } from './character/character-card.component';
+import { LightsaberComponent } from './character/lightsaber.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { StarWarsComponent } from './star-wars.component';
   declarations: [
     CharacterCardListComponent,
     CharacterDetailComponent,
-    StarWarsComponent
+    StarWarsComponent,
+    CharacterCardComponent,
+    LightsaberComponent
   ],
   providers: []
 })
