@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Character, CharacterApi } from '@mp/star-wars';
 import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
+import { Character } from './character';
+import { CharacterApi } from './character-api.service';
 
 @Component({
   selector: 'mp-character-form',
