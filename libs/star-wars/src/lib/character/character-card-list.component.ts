@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CharacterApi } from './character-api.service';
 
 @Component({
   selector: 'mp-character-card-list',
   template: `
-    <p>
-      character-card-list works!
-    </p>
+    <mat-card *ngFor="let character of characters$ | async">
+      <mat-card-title
+        >{{ character.firstName }} {{ character.lastName }}</mat-card-title
+      >
+      <mat-card-content>{{ character.lightsaberColor }}</mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['character', character.id]">
+          Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
   `,
-  styles: [],
+  styles: []
 })
-export class CharacterCardListComponent implements OnInit {
-  constructor() {}
+export class CharacterCardListComponent {
+  characters$ = this.characterApi.fetchAll();
 
-  ngOnInit(): void {}
+  constructor(private characterApi: CharacterApi) {}
 }

@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck, switchMap, tap } from 'rxjs/operators';
+import { Character } from './character';
+import { CharacterApi } from './character-api.service';
 
 @Component({
   selector: 'mp-character-detail',
   template: `
-    <p>
-      character-detail works!
-    </p>
-  `,
-  styles: [
-  ]
+    <ng-container *ngIf="character$ | async as character">
+      <h2>{{ character.firstName }} {{ character.lastName }}</h2>
+      <img [src]="character.avatarUrl" [attr.alt]="character.firstName" />
+    </ng-container>
+  `
 })
-export class CharacterDetailComponent implements OnInit {
+export class CharacterDetailComponent {
+  character$ = this.fetchCharacter();
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private characterApi: CharacterApi
+  ) {}
 
-  ngOnInit(): void {
+  private fetchCharacter(): Observable<Character | null> {
+    return this.route.params.pipe(
+      pluck('id'),
+      switchMap(id => this.characterApi.fetchById(id)),
+      tap(console.log)
+    );
   }
-
 }

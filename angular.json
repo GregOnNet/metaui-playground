@@ -26,7 +26,7 @@
               "apps/metaui-playground/src/assets",
               {
                 "glob": "**/*",
-                "input": "libs/swapi/src/assets",
+                "input": "libs/star-wars/src/assets",
                 "output": "assets"
               }
             ],
