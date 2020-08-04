@@ -136,32 +136,67 @@
         }
       }
     },
-    "swapi": {
+    "material": {
       "projectType": "library",
-      "root": "libs/swapi",
-      "sourceRoot": "libs/swapi/src",
-      "prefix": "metaui-playground",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "mp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/swapi/tsconfig.lib.json",
-              "libs/swapi/tsconfig.spec.json"
+              "libs/material/tsconfig.lib.json",
+              "libs/material/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/swapi/**/*"
+              "!libs/material/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/swapi/jest.config.js",
-            "tsConfig": "libs/swapi/tsconfig.spec.json",
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/swapi/src/test-setup.ts"
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "star-wars": {
+      "projectType": "library",
+      "root": "libs/star-wars",
+      "sourceRoot": "libs/star-wars/src",
+      "prefix": "mp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/star-wars/tsconfig.lib.json",
+              "libs/star-wars/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/star-wars/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/star-wars/jest.config.js",
+            "tsConfig": "libs/star-wars/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/star-wars/src/test-setup.ts"
           }
         }
       },
