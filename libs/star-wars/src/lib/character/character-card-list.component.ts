@@ -4,6 +4,14 @@ import { CharacterApi } from './character-api.service';
 @Component({
   selector: 'mp-character-list',
   template: `
+    <button
+      mat-raised-button
+      color="accent"
+      [routerLink]="['character', 'create']"
+    >
+      CREATE
+    </button>
+
     <mp-character-card
       *ngFor="let character of characters$ | async"
       [character]="character"

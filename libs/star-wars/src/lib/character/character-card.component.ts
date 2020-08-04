@@ -11,8 +11,14 @@ import { Character } from './character';
         {{ character.firstName }} {{ character.lastName }}
       </mat-card-title>
       <mat-card-actions align="end">
-        <button mat-button [routerLink]="['character', character.id]">
-          Details
+        <button
+          mat-icon-button
+          [routerLink]="['character', 'edit', character.id]"
+        >
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['character', character.id]">
+          <mat-icon>account_circle</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>

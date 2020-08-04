@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck, switchMap, tap } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
 import { Character } from './character';
 import { CharacterApi } from './character-api.service';
 
@@ -25,8 +25,7 @@ export class CharacterDetailComponent {
   private fetchCharacter(): Observable<Character | null> {
     return this.route.params.pipe(
       pluck('id'),
-      switchMap(id => this.characterApi.fetchById(id)),
-      tap(console.log)
+      switchMap(id => this.characterApi.fetchById(id))
     );
   }
 }
