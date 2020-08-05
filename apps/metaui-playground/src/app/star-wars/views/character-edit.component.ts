@@ -8,32 +8,18 @@ import { Character } from '../model/character';
 @Component({
   selector: 'mp-character-form',
   template: `
-    <h2>Create or Edit</h2>
-    <form class="one-column-form">
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Light Saber Color</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
+    
+    
+    <h2>Edit Character</h2>
 
-      <button mat-raised-button color="primary">SAVE</button>
-    </form>
+    <ng-container *ngIf="character$ | async as character">
+        <m-context [object]="character" operation="edit" layout="Inspect">
+            <m-include-component></m-include-component>
+        </m-context>
+        <button mat-raised-button color="primary">SAVE</button>
+    </ng-container>
   `,
-  styles: [
-    `
-      .one-column-form {
-        display: grid;
-        grid-gap: 0.1rem;
-      }
-    `
-  ]
+  styles: []
 })
 export class CharacterEditComponent {
   character$ = this.fetchCharacter();

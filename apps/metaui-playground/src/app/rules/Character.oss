@@ -21,27 +21,29 @@ class=Character {
      label:"Clan Name";
   }
 
+  field=lightsaberColor {
+      trait:asSelect;
+      choices:['Blue', 'Green', 'Red', 'Violet', 'None'];
+  }
+
   field=bio {
      label:"Battles";
   }
-
-  zNone => *;
-  zLeft => firstName => lastName;
 }
 
 /*
-  Sample definition for operations edit and create
+  Distribute field to different layouts
 
 */
 class=Character {
-   operation=(edit, create) {
+   operation=(edit) {
       zNone => *;
-      zLeft => name => description;
+      zLeft => firstName => lastName => lightsaberColor;
    }
 
   operation=(create) {
       zNone => *;
-      zLeft => name => description => created;
+      zLeft => firstName => lastName => lightsaberColor => bio;
    }
 
 }

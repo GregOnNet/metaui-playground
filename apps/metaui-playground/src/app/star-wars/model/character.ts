@@ -33,7 +33,7 @@ export class Character implements Entity {
       avatarUrl: String,
       firstName: String,
       lastName: String,
-      lightsaberColor: LightsaberColor,
+      lightsaberColor: String,
       bio: String
     };
   }

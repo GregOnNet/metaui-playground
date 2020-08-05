@@ -13,6 +13,7 @@ import { CharacterEditComponent } from './views/character-edit.component';
 import { CharacterCreateComponent } from './views/character-create.component';
 import { CharacterCardComponent } from './character-card.component';
 import { LightsaberComponent } from './lightsaber.component';
+import { MetaUIRulesModule } from '@ngx-metaui/rules';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { LightsaberComponent } from './lightsaber.component';
     MaterialModule,
     StarWarsRoutingModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MetaUIRulesModule
   ],
   exports: [StarWarsComponent],
   declarations: [
