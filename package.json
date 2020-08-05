@@ -29,16 +29,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^10.0.0",
-    "@angular/cdk": "~10.1.0-sha-4fa9eb9d2",
-    "@angular/common": "^10.0.0",
-    "@angular/compiler": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "@angular/forms": "^10.0.0",
-    "@angular/material": "~10.1.0-sha-4fa9eb9d2",
-    "@angular/platform-browser": "^10.0.0",
-    "@angular/platform-browser-dynamic": "^10.0.0",
-    "@angular/router": "^10.0.0",
+    "@angular/animations": "9.1.12",
+    "@angular/cdk": "9.2.4",
+    "@angular/common": "9.1.12",
+    "@angular/compiler": "9.1.12",
+    "@angular/core": "9.1.12",
+    "@angular/forms": "9.1.12",
+    "@angular/material": "9.2.4",
+    "@angular/platform-browser": "9.1.12",
+    "@angular/platform-browser-dynamic": "9.1.12",
+    "@angular/router": "9.1.12",
     "@nrwl/angular": "10.0.7",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
@@ -64,6 +64,6 @@
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "3.6.4"
   }
 }
