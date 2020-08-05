@@ -5,7 +5,7 @@ const routes: Route[] = [
   { path: '', redirectTo: 'star-wars', pathMatch: 'full' },
   {
     path: 'star-wars',
-    loadChildren: () => import('@mp/star-wars').then(m => m.StarWarsModule)
+    loadChildren: () => import('./star-wars/star-wars.module').then(m => m.StarWarsModule)
   }
 ];
 

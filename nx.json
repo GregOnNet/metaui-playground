@@ -29,18 +29,6 @@
   "projects": {
     "metaui-playground": {
       "tags": []
-    },
-    "metaui-playground-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "metaui-playground"
-      ]
-    },
-    "material": {
-      "tags": []
-    },
-    "star-wars": {
-      "tags": []
     }
   }
 }

@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MaterialModule } from '@mp/material';
+import { MaterialModule } from '../commons/material.module';
 import { CharacterCardListComponent } from './character/character-card-list.component';
 import { CharacterCardComponent } from './character/character-card.component';
 import { CharacterDetailComponent } from './character/character-detail.component';

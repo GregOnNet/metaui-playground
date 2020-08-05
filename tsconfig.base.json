@@ -22,12 +22,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mp/material": [
-        "libs/material/src/index.ts"
-      ],
-      "@mp/star-wars": [
-        "libs/star-wars/src/index.ts"
-      ]
     }
   },
   "exclude": [
