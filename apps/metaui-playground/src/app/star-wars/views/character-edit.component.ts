@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
-import { Character } from './character';
-import { CharacterApi } from './character-api.service';
+import { CharacterApi } from '../api/character-api.service';
+import { Character } from '../model/character';
 
 @Component({
   selector: 'mp-character-form',
@@ -35,7 +35,7 @@ import { CharacterApi } from './character-api.service';
     `
   ]
 })
-export class CharacterFormComponent {
+export class CharacterEditComponent {
   character$ = this.fetchCharacter();
 
   constructor(

@@ -1,5 +1,5 @@
-import { Character } from './character';
-import { LightsaberColor } from './lightsaber-color';
+import { LightsaberColor } from '../model/lightsaber-color';
+import { Character } from '../model/character';
 
 export const characterMocks: Character[] = [
   new Character(

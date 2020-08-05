@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { defer, Observable, of } from 'rxjs';
-import { Character } from './character';
 import { characterMocks } from './character.mock';
+import { Character } from '../model/character';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterApi {

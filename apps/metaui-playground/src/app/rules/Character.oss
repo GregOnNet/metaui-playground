@@ -1,0 +1,47 @@
+/*
+    User rules.oss -- Meta-data rules. Generated file
+
+    Default definition
+*/
+class=Character {
+
+  field=id {
+     label:"Id";
+  }
+
+  field=avatarUrl {
+     label:"Profile Url";
+  }
+
+  field=firstName {
+     label:"Jedi Name";
+  }
+
+  field=lastName {
+     label:"Clan Name";
+  }
+
+  field=bio {
+     label:"Battles";
+  }
+
+  zNone => *;
+  zLeft => firstName => lastName;
+}
+
+/*
+  Sample definition for operations edit and create
+
+*/
+class=Character {
+   operation=(edit, create) {
+      zNone => *;
+      zLeft => name => description;
+   }
+
+  operation=(create) {
+      zNone => *;
+      zLeft => name => description => created;
+   }
+
+}

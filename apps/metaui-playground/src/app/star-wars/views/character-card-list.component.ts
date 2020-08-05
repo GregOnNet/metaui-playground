@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CharacterApi } from './character-api.service';
+import { CharacterApi } from '../api/character-api.service';
 
 @Component({
   selector: 'mp-character-list',

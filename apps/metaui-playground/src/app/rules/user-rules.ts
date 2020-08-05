@@ -3,3 +3,6 @@
  */
 
 export {ApplicationRule} from './ts/Application.oss';
+
+/** Auto generated  export */
+export {CharacterRule} from './ts/Character.oss';
