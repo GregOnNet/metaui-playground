@@ -10,3 +10,15 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+  constructor(private config: MetaConfig) {
+    
+   // mandatory - you need to register app defined rules and types since there is no
+   // introspection in js
+
+    const rules: any[] = config.get('metaui.rules.user-rules') || [];
+    rules.push(userRules);
+    config.set('metaui.rules.user-rules', rules);
+
+  }
+
