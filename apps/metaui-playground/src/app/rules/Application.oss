@@ -8,16 +8,3 @@ module {
 }
 
 
-field {
-  @trait=lbSelect {
-        editable {
-            component:Select;
-            bindings:{
-                ngModel:$value;
-                required:${properties.get("required")};
-                displayKey:${ meta.displayLabel(type, properties.get("labelField"), true )};
-                list:${properties.get("choices")};
-            };
-        }
-   }
-}

@@ -35,7 +35,7 @@ class=Character {
   }
 
   field=lightsaberColor {
-      trait:lbSelect;
+      trait:asSelect;
       choices:${component.all};
   }
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MetaRules, META_RULES } from '@ngx-metaui/rules';
+import { META_RULES, MetaRules } from '@ngx-metaui/rules';
 import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 import { MetaUiOperationNotifier } from '../../commons/meta-ui-operation-revealer.service';
@@ -11,13 +11,13 @@ import { LightsaberColor } from '../model/lightsaber-color';
 @Component({
   selector: 'mp-character-detail',
   template: `
-    <m-context
-      [object]="character$ | async"
-      [operation]="operation"
-      layout="Inspect"
-    >
-      <m-include-component></m-include-component>
-    </m-context>
+      <m-context
+              [object]="character$ | async"
+              [operation]="operation"
+              layout="Inspect"
+      >
+          <m-include-component></m-include-component>
+      </m-context>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -53,7 +53,7 @@ export class CharacterViewComponent {
     return this.route.snapshot.url.toString().includes('create')
       ? 'create'
       : this.route.snapshot.url.toString().includes('edit')
-      ? 'edit'
-      : 'view';
+        ? 'edit'
+        : 'view';
   }
 }
