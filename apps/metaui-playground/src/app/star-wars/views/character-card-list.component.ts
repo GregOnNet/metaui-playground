@@ -9,7 +9,7 @@ import { CharacterApi } from '../api/character-api.service';
       color="accent"
       [routerLink]="['character', 'create']"
     >
-      CREATE
+      Create
     </button>
 
     <mp-character-card

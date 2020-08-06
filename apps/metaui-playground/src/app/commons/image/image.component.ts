@@ -5,20 +5,19 @@ import {
   forwardRef,
   Inject,
   Input,
-  NgZone,
   Optional,
-  Renderer2,
   Self
 } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_INPUT_VALUE_ACCESSOR } from '@angular/material/input';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'mp-img',
-  template: `<img [src]="url" [attr.alt]="alt"/>`,
+  template: `
+    <img [src]="url" [attr.alt]="alt" />
+  `,
   styleUrls: ['./image.component.scss'],
   providers: [
     {
@@ -29,7 +28,8 @@ import { MAT_INPUT_VALUE_ACCESSOR } from '@angular/material/input';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ImageComponent implements MatFormFieldControl<any>, ControlValueAccessor {
+export class ImageComponent
+  implements MatFormFieldControl<any>, ControlValueAccessor {
   @Input()
   url: string = '';
 
@@ -38,10 +38,8 @@ export class ImageComponent implements MatFormFieldControl<any>, ControlValueAcc
 
   readonly stateChanges = new Subject<void>();
 
-  onChange = (_: any) => {
-  };
-  onTouched = () => {
-  };
+  onChange = (_: any) => {};
+  onTouched = () => {};
 
   autofilled: boolean = false;
   disabled: boolean = false;
@@ -51,15 +49,14 @@ export class ImageComponent implements MatFormFieldControl<any>, ControlValueAcc
   required: boolean = false;
   value: any | null;
 
-
-  constructor(private _cd: ChangeDetectorRef,
-              @Optional() @Self() public ngControl: NgControl,
-              @Optional() protected parentForm: NgForm,
-              @Optional() protected parentFormGroup: FormGroupDirective,
-              _defaultErrorStateMatcher: ErrorStateMatcher,
-              @Optional() @Self() @Inject(MAT_INPUT_VALUE_ACCESSOR) private inputValueAccessor: any,
-              private _renderer: Renderer2,
-              ngZone: NgZone) {
+  constructor(
+    private _cd: ChangeDetectorRef,
+    @Optional() @Self() public ngControl: NgControl,
+    @Optional()
+    @Self()
+    @Inject(MAT_INPUT_VALUE_ACCESSOR)
+    private inputValueAccessor: any
+  ) {
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
     }
@@ -68,7 +65,6 @@ export class ImageComponent implements MatFormFieldControl<any>, ControlValueAcc
   get empty(): boolean {
     return false;
   }
-
 
   get errorState(): boolean {
     return false;
@@ -82,16 +78,9 @@ export class ImageComponent implements MatFormFieldControl<any>, ControlValueAcc
     return 'mp-img';
   }
 
-  onContainerClick(event: MouseEvent): void {
-  }
+  onContainerClick(event: MouseEvent): void {}
 
-  setDescribedByIds(ids: string[]): void {
-  }
-
-
-  ngOnInit(): void {
-  }
-
+  setDescribedByIds(ids: string[]): void {}
 
   registerOnChange(fn: (_: any) => void): void {
     this.onChange = fn;
@@ -101,10 +90,7 @@ export class ImageComponent implements MatFormFieldControl<any>, ControlValueAcc
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-  }
+  setDisabledState(isDisabled: boolean): void {}
 
-  writeValue(value: any): void {
-  }
-
+  writeValue(value: any): void {}
 }

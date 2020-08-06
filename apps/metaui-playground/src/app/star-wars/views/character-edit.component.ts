@@ -17,16 +17,17 @@ import { Character } from '../model/character';
       <button mat-raised-button color="primary">SAVE</button>
     </ng-container>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterEditComponent {
   character$ = this.fetchCharacter();
 
   constructor(
     private route: ActivatedRoute,
-    private characterApi: CharacterApi
-  ) {}
+    private characterApi: CharacterApi // @Inject(META_RULES) private meta: MetaRules
+  ) {
+    // this.meta.registerDependency('component', this);
+  }
 
   private fetchCharacter(): Observable<Character | null> {
     return this.route.params.pipe(

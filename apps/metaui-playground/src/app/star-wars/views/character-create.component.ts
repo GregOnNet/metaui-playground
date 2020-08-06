@@ -10,9 +10,11 @@ import { Character } from '../model/character';
   template: `
     <h2>Create</h2>
     <m-context [object]="character" operation="create" layout="Inspect">
-        <m-include-component></m-include-component>
+      <m-include-component></m-include-component>
     </m-context>
-    <button mat-raised-button color="primary">SAVE</button>
+    <button mat-raised-button color="primary" (click)="saveCharacter()">
+      SAVE
+    </button>
   `,
   styles: [
     `
@@ -36,5 +38,10 @@ export class CharacterCreateComponent {
       pluck('id'),
       switchMap(id => this.characterApi.fetchById(id))
     );
+  }
+
+  saveCharacter() {
+    this.characterApi.save(this.character);
+    this.character = Character.empty();
   }
 }

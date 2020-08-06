@@ -6,39 +6,43 @@
 class=Character {
 
   @field=fullName {
-    trait:derived, heading1;
-    type:String;
+    trait: derived, heading1;
+    type: String;
     value: ${object.firstName + ' ' + object.lastName};
   }
+
   field=id {
      label:"Id";
   }
 
   field=avatarUrl {
      label:"Profile Url";
-     component:ImageComponent;
+     component: ImageComponent;
      bindings: {
        url: $value;
-       alt: ${object.firstName};
+       /*        alt: ${object.firstName};
+       */
+       alt: ${object.firstName + ' ' + object.lastName + ' avatar image'};
      };
   }
 
   field=firstName {
-     label:"Jedi Name";
+     label: "Jedi Name";
   }
 
   field=lastName {
-     label:"Clan Name";
+     label: "Clan Name";
   }
 
   field=lightsaberColor {
-      trait:asSelect;
-      choices:['Blue', 'Green', 'Red', 'Violet', 'None'];
+      trait: asSelect;
+      choices: ['Red', 'Green', 'Blue', 'Yellow'];
+      /* choices: ${component.all}; */
   }
 
   field=bio {
-     label:"Battles";
-     trait:longtext;
+     label: "Battles";
+     trait: longtext;
   }
 }
 
@@ -46,12 +50,14 @@ class=Character {
   Distribute field to different layouts
 
 */
+
 class=Character {
    operation=(view) {
      field {
       noLabelLayout:true;
       styleClass:'mp-margin-0';
      }
+
      zNone => *;
      zLeft => fullName => avatarUrl;
   }

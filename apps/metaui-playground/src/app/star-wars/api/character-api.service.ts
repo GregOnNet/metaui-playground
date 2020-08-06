@@ -13,7 +13,7 @@ export class CharacterApi {
 
   fetchById(id: number | string): Observable<Character | null> {
     const found = this.characters.find(character => character.id === +id);
-    return of(found || null);
+    return of(Object.assign(Character.empty(), found) || null);
   }
 
   update(characterUpdate: Partial<Character>) {
@@ -41,5 +41,9 @@ export class CharacterApi {
   remove(id: string) {
     this.characters = this.characters.filter(character => character.id !== +id);
     return of(true);
+  }
+
+  save(character: Character) {
+    this.characters.push(character);
   }
 }

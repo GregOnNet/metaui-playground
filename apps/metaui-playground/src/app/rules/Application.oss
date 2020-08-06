@@ -6,3 +6,17 @@
  */
 module {
 }
+
+field {
+  @trait=lightSaberColorSelect {
+      editable {
+          component:Select;
+          bindings:{
+              ngModel: $value;
+              required: ${properties.get("required")};
+              displayKey: label;
+              list: ${properties.get("choices")};
+          };
+      }
+  }
+}

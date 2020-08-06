@@ -1,6 +1,4 @@
 import { Entity } from '@ngx-metaui/rules';
-
-
 import { LightsaberColor } from './lightsaber-color';
 
 export class Character implements Entity {
@@ -11,8 +9,7 @@ export class Character implements Entity {
     public lastName: string,
     public lightsaberColor: LightsaberColor,
     public bio: string = ''
-  ) {
-  }
+  ) {}
 
   static empty(): Character {
     return new Character(-1, '', '', '', LightsaberColor.None, '');
@@ -25,7 +22,6 @@ export class Character implements Entity {
   className(): string {
     return 'Character';
   }
-
 
   getTypes(): any {
     return {
