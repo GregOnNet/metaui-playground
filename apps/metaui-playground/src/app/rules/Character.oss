@@ -5,12 +5,22 @@
 */
 class=Character {
 
+  @field=fullName {
+    trait:derived, heading1;
+    type:String;
+    value: ${object.firstName + ' ' + object.lastName};
+  }
   field=id {
      label:"Id";
   }
 
   field=avatarUrl {
      label:"Profile Url";
+     component:ImageComponent;
+     bindings: {
+       url: $value;
+       alt: ${object.firstName};
+     };
   }
 
   field=firstName {
@@ -28,6 +38,7 @@ class=Character {
 
   field=bio {
      label:"Battles";
+     trait:longtext;
   }
 }
 
@@ -36,6 +47,14 @@ class=Character {
 
 */
 class=Character {
+   operation=(view) {
+     field {
+      noLabelLayout:true;
+      styleClass:'mp-margin-0';
+     }
+     zNone => *;
+     zLeft => fullName => avatarUrl;
+  }
    operation=(edit) {
       zNone => *;
       zLeft => firstName => lastName => lightsaberColor;

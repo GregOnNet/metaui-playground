@@ -9,8 +9,9 @@ import { Character } from '../model/character';
   selector: 'mp-character-detail',
   template: `
     <ng-container *ngIf="character$ | async as character">
-      <h2>{{ character.firstName }} {{ character.lastName }}</h2>
-      <img [src]="character.avatarUrl" [attr.alt]="character.firstName" />
+        <m-context [object]="character" operation="view" layout="Inspect">
+            <m-include-component></m-include-component>
+        </m-context>
     </ng-container>
   `
 })

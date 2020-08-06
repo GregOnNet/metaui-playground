@@ -8,28 +8,11 @@ import { Character } from '../model/character';
 @Component({
   selector: 'mp-character-form',
   template: `
-    <h2>Create or Edit</h2>
-    <form class="one-column-form">
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Light Saber Color</mat-label>
-        <input matInput placeholder="Placeholder" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-          <mat-label>Biography</mat-label>
-          <textarea matInput placeholder="Placeholder"></textarea>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary">SAVE</button>
-    </form>
+    <h2>Create</h2>
+    <m-context [object]="character" operation="create" layout="Inspect">
+        <m-include-component></m-include-component>
+    </m-context>
+    <button mat-raised-button color="primary">SAVE</button>
   `,
   styles: [
     `
@@ -41,7 +24,7 @@ import { Character } from '../model/character';
   ]
 })
 export class CharacterCreateComponent {
-  character$ = this.fetchCharacter();
+  character = Character.empty();
 
   constructor(
     private route: ActivatedRoute,
