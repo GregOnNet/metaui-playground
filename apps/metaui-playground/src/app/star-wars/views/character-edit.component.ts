@@ -1,14 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 import { CharacterApi } from '../api/character-api.service';
 import { Character } from '../model/character';
+import { META_RULES, MetaRules } from '@ngx-metaui/rules';
+import { LightsaberColor } from '../model/lightsaber-color';
 
 @Component({
   selector: 'mp-character-form',
   template: `
-    <h2>Edit Character</h2>
+      <h2>Edit Character</h2>
 
     <ng-container *ngIf="character$ | async as character">
       <m-context [object]="character" operation="edit" layout="Inspect">
@@ -22,11 +24,22 @@ import { Character } from '../model/character';
 export class CharacterEditComponent {
   character$ = this.fetchCharacter();
 
+  all: LightsaberColor[] = [
+      new LightsaberColor('Blue', '#249BCB'),
+      new LightsaberColor('Green', '#14A259'),
+      new LightsaberColor('Red', '#14A259'),
+      new LightsaberColor('Violet', '#82277C'),
+      new LightsaberColor('None', '#000000'),
+
+  ];
+
   constructor(
     private route: ActivatedRoute,
-    private characterApi: CharacterApi // @Inject(META_RULES) private meta: MetaRules
+    private characterApi: CharacterApi,
+    @Inject(META_RULES) protected meta: MetaRules
   ) {
-    // this.meta.registerDependency('component', this);
+
+    this.meta.registerDependency('component', this);
   }
 
   private fetchCharacter(): Observable<Character | null> {

@@ -1,0 +1,12 @@
+
+class=LightsaberColor {
+
+  field=id {
+    trait: labelField;
+    label:"Color Label";
+  }
+
+  field=color {
+    label:"Color Hex";
+  }
+}

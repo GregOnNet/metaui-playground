@@ -12,7 +12,8 @@ export class Character implements Entity {
   ) {}
 
   static empty(): Character {
-    return new Character(-1, '', '', '', LightsaberColor.None, '');
+    return new Character(-1, '', '', '',
+      new LightsaberColor('', ''), '');
   }
 
   identity(): string {
@@ -29,7 +30,7 @@ export class Character implements Entity {
       avatarUrl: String,
       firstName: String,
       lastName: String,
-      lightsaberColor: String,
+      lightsaberColor: LightsaberColor,
       bio: String
     };
   }

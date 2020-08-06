@@ -8,3 +8,5 @@ export {ApplicationRule} from './ts/Application.oss';
 export {CharacterRule} from './ts/Character.oss';
 
 export {ImageComponent} from '../commons/image/image.component';
+
+export {LightsaberColorRule} from './ts/LightsaberColor.oss';

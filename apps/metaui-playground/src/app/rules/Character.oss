@@ -35,9 +35,8 @@ class=Character {
   }
 
   field=lightsaberColor {
-      trait: asSelect;
-      choices: ['Red', 'Green', 'Blue', 'Yellow'];
-      /* choices: ${component.all}; */
+      trait:lbSelect;
+      choices:${component.all};
   }
 
   field=bio {
@@ -55,7 +54,6 @@ class=Character {
    operation=(view) {
      field {
       noLabelLayout:true;
-      styleClass:'mp-margin-0';
      }
 
      zNone => *;
