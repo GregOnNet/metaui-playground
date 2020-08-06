@@ -6,7 +6,7 @@ import { Character } from './model/character';
   template: `
     <mat-card>
       <mat-card-title>
-        <mp-lightsaber [backgroundColor]="character.lightsaberColor">
+        <mp-lightsaber [backgroundColor]="character.lightsaberColor.color">
         </mp-lightsaber>
         {{ character.firstName }} {{ character.lastName }}
       </mat-card-title>
