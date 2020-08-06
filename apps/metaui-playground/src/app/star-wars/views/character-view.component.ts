@@ -1,25 +1,33 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck, switchMap } from 'rxjs/operators';
+import { pluck, switchMap, tap } from 'rxjs/operators';
+import { MetaUiOperationNotifier } from '../../commons/meta-ui-operation-revealer.service';
 import { CharacterApi } from '../api/character-api.service';
 import { Character } from '../model/character';
 
 @Component({
   selector: 'mp-character-detail',
   template: `
-    <ng-container *ngIf="character$ | async as character">
-        <m-context [object]="character" operation="view" layout="Inspect">
-            <m-include-component></m-include-component>
-        </m-context>
-    </ng-container>
-  `
+    <m-context
+      [object]="character$ | async"
+      [operation]="operation$ | async"
+      layout="Inspect"
+    >
+      <m-include-component></m-include-component>
+    </m-context>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterViewComponent {
   character$ = this.fetchCharacter();
+  operation$ = this.operationRevealer
+    .operationChanges()
+    .pipe(tap(operation => console.log('View Component', operation)));
 
   constructor(
     private route: ActivatedRoute,
+    private operationRevealer: MetaUiOperationNotifier,
     private characterApi: CharacterApi
   ) {}
 
