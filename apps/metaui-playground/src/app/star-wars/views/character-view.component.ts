@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck, switchMap, tap } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
 import { MetaUiOperationNotifier } from '../../commons/meta-ui-operation-revealer.service';
 import { CharacterApi } from '../api/character-api.service';
 import { Character } from '../model/character';
@@ -11,7 +11,7 @@ import { Character } from '../model/character';
   template: `
     <m-context
       [object]="character$ | async"
-      [operation]="operation$ | async"
+      [operation]="operation"
       layout="Inspect"
     >
       <m-include-component></m-include-component>
@@ -21,9 +21,7 @@ import { Character } from '../model/character';
 })
 export class CharacterViewComponent {
   character$ = this.fetchCharacter();
-  operation$ = this.operationRevealer
-    .operationChanges()
-    .pipe(tap(operation => console.log('View Component', operation)));
+  operation = this.getActiveOperation();
 
   constructor(
     private route: ActivatedRoute,
@@ -36,5 +34,13 @@ export class CharacterViewComponent {
       pluck('id'),
       switchMap(id => this.characterApi.fetchById(id))
     );
+  }
+
+  private getActiveOperation() {
+    return this.route.snapshot.url.toString().includes('create')
+      ? 'create'
+      : this.route.snapshot.url.toString().includes('edit')
+      ? 'edit'
+      : 'view';
   }
 }
