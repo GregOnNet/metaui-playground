@@ -59,6 +59,7 @@ class=Character {
      zNone => *;
      zLeft => fullName => avatarUrl;
   }
+
    operation=(edit) {
       zNone => *;
       zLeft => firstName => lastName => lightsaberColor;
@@ -68,5 +69,4 @@ class=Character {
       zNone => *;
       zLeft => firstName => lastName => lightsaberColor => bio;
    }
-
 }

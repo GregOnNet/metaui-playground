@@ -12,12 +12,11 @@ export class Character implements Entity {
   ) {}
 
   static empty(): Character {
-    return new Character(-1, '', '', '',
-      new LightsaberColor('', ''), '');
+    return new Character(-1, '', '', '', new LightsaberColor('', ''), '');
   }
 
   identity(): string {
-    return this.id + '';
+    return `${this.id}`;
   }
 
   className(): string {
