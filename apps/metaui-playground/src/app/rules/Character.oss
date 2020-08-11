@@ -82,3 +82,6 @@ class=Character {
       zLeft => title => firstName => lastName => lightsaberColor => bio;
    }
 }
+
+
+
