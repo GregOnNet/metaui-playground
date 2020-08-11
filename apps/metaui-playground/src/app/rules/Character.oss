@@ -36,7 +36,7 @@ class=Character {
 
   field=lightsaberColor {
       trait:asSelect;
-      choices:${component.all};
+      choices:${component.lightsaberColors};
   }
 
   field=bio {
