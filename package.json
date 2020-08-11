@@ -26,8 +26,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "compile:oss": "oss -i apps/metaui-playground/src/app/rules -u -n user-rules",
-    "watch:oss": "watch --wait=8 'npm run compile:oss' apps/metaui-playground/src/app/rules "
+    "oss:build": "oss -i apps/metaui-playground/src/app/rules -u -n user-rules",
+    "oss:watch": "watch --wait=8 'npm run compile:oss' apps/metaui-playground/src/app/rules "
   },
   "private": true,
   "dependencies": {
