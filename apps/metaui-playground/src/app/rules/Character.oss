@@ -61,12 +61,24 @@ class=Character {
   }
 
    operation=(edit) {
+     @field=title {
+        trait: derived, heading1;
+        type: String;
+        value: 'Edit';
+     }
+
       zNone => *;
-      zLeft => firstName => lastName => lightsaberColor;
+      zLeft => title => firstName => lastName => lightsaberColor;
    }
 
   operation=(create) {
+       @field=title {
+          trait: derived, heading1;
+          type: String;
+          value: 'Create';
+       }
+
       zNone => *;
-      zLeft => firstName => lastName => lightsaberColor => bio;
+      zLeft => title => firstName => lastName => lightsaberColor => bio;
    }
 }
