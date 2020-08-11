@@ -9,8 +9,12 @@ export const characterMocks: Character[] = [
     'Kenobi',
     new LightsaberColor('Blue', '#249BCB')
   ),
-  new Character(1, 'assets/yoda.jpg', 'Yoda', '',
-    new LightsaberColor('Green', '#249BCB')
+  new Character(
+    1,
+    'assets/yoda.jpg',
+    'Yoda',
+    '',
+    new LightsaberColor('Green', '#14A259')
   ),
   new Character(
     2,
@@ -26,9 +30,18 @@ export const characterMocks: Character[] = [
     'Skywalker',
     new LightsaberColor('Blue', '#249BCB')
   ),
-  new Character(4, 'assets/mace.jpg', 'Mace', 'Windu',
-    new LightsaberColor('Violet', '#82277C')),
-  new Character(5, 'assets/revan.jpg', 'Revan', '',
+  new Character(
+    4,
+    'assets/mace.jpg',
+    'Mace',
+    'Windu',
+    new LightsaberColor('Violet', '#82277C')
+  ),
+  new Character(
+    5,
+    'assets/revan.jpg',
+    'Revan',
+    '',
     new LightsaberColor('Red', '#D01824')
   )
 ];

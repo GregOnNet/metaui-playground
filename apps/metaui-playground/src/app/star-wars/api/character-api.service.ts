@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Character } from '../model/character';
 import { characterMocks } from './character.mock';
 
@@ -16,26 +17,13 @@ export class CharacterApi {
     return of(Object.assign(Character.empty(), found) || null);
   }
 
-  update(characterUpdate: Partial<Character>) {
-    const characterOrigin = this.characters.find(
-      character => character.id === characterUpdate.id
+  save(character: Character | null): Observable<Character | null> {
+    return this.update(character).pipe(
+      catchError(() => {
+        if (character) this.characters.push(character);
+        return of(character || null);
+      })
     );
-
-    if (!characterOrigin) {
-      throw new Error(
-        `[Character API] Unable to find character with id "${characterUpdate.id}"`
-      );
-    }
-
-    Object.assign(characterOrigin, characterUpdate);
-
-    this.characters = this.characters.map(character =>
-      character.id === characterUpdate.id
-        ? Object.assign(character, characterUpdate)
-        : character
-    );
-
-    return of(characterOrigin);
   }
 
   remove(id: string) {
@@ -43,7 +31,25 @@ export class CharacterApi {
     return of(true);
   }
 
-  save(character: Character) {
-    this.characters.push(character);
+  update(characterUpdate: Partial<Character> | null) {
+    const characterOrigin = this.characters.find(
+      character => character.id === characterUpdate?.id
+    );
+
+    if (!characterOrigin) {
+      return throwError(
+        `[Character API] Unable to find character with id "${characterUpdate?.id}"`
+      );
+    }
+
+    Object.assign(characterOrigin, characterUpdate);
+
+    this.characters = this.characters.map(character =>
+      character.id === characterUpdate?.id
+        ? Object.assign(character, characterUpdate)
+        : character
+    );
+
+    return of(characterOrigin);
   }
 }
