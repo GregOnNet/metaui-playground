@@ -13,4 +13,14 @@ yarn
 yarn start
 ```
 
+## Refactoring steps
+
+You can review different versions of this application by using `git tags`.
+
+```bash
+git checkout step-1 # basic approach
+git checkout step-2 # use metaUI's m-context
+git checkout step-3 # simplified app with m-context
+```
+
 [metaui.io](https://metaui.io)
